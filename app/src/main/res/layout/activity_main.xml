@@ -13,7 +13,7 @@
         android:padding="8dp"
         android:text="QUANTITY"
         android:textAllCaps="true"
-        android:textColor="#4c4949"
+        android:textColor="#848383"
         android:textSize="16sp" />
 
     <TextView
@@ -25,13 +25,34 @@
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/price_tag_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="PRICE"
+        android:textColor="#848383"
+        android:textAllCaps="true"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/price_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="$0"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+
     <Button
         android:id="@+id/order_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="submitOrder"
         android:padding="8dp"
-        android:text="ORDER"
-        android:onClick="submitOrder"/>
+        android:text="ORDER" />
 
 
 </LinearLayout>
