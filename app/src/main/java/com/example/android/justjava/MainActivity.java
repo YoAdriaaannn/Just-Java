@@ -2,12 +2,12 @@
 package com.example.android.justjava;
 
 
-        import android.os.Bundle;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.View;
-        import android.widget.TextView;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 
-        import java.text.NumberFormat;
+import java.text.NumberFormat;
 
 
 /**
@@ -15,7 +15,8 @@ package com.example.android.justjava;
  */
 public class MainActivity extends AppCompatActivity {
 
-
+    // global variable for amount of coffee
+    int quantity = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,44 +25,39 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method is called when the order button is clicked.
-        */
-public void submitOrder(View view) {
+     */
+    public void submitOrder(View view) {
 
-        // variable for how many coffees ordered.
-        int quantityOfCoffees = 15;
 
-        display(quantityOfCoffees);
-        displayPrice(quantityOfCoffees * 5);
-        }
+        display(quantity);
+        displayPrice(quantity * 5);
+    }
 
-// method to increase quantity
-public void increment(View view) {
+    // method to increase quantity
+    public void increment(View view) {
+        quantity = quantity + 1;
+        display(quantity);
 
-        // variable to increase quantity
-        int increase = 3;
-        display(increase);
-        }
+    }
 
-// method to decrease quantity
-public void decrement(View view) {
+    // method to decrease quantity
+    public void decrement(View view) {
+        quantity = quantity - 1;
+        display(quantity);
+    }
 
-        //variable to decrease quantity
-        int decrease = 1;
-        display(decrease);
-        }
-
-/**
- * This method displays the given quantity value on the screen.
- */
-private void display(int number) {
+    /**
+     * This method displays the given quantity value on the screen.
+     */
+    private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
-        }
+    }
 
     /* This method displays the given price on the screen.
            */
-private void displayPrice(int number) {
+    private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-        }
-        }
+    }
+}
