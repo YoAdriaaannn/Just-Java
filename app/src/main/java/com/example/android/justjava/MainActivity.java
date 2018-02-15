@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -29,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
 
+        Date todaysDate = Calendar.getInstance().getTime();
         String priceMessage = "Total: $" + ( quantity * 5 ) + "\n" + "Thank you!";
+        priceMessage = priceMessage + "\n" + todaysDate;
         displayMessage(priceMessage);
 
         //display(quantity);
