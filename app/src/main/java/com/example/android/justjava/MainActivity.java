@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
 
-        String priceMessage = "That would be " + "$" + ( quantity * 5 ) + " please." ;
+        String priceMessage = "You owe " +  ( quantity * 5 ) + " bucks, dude!" ;
         displayMessage(priceMessage);
 
         //display(quantity);
