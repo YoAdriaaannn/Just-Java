@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     // global variable for amount of coffee
     int quantity = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
 
+        String priceMessage = "Amount due " + "$" + ( quantity * 5 ) ;
+        displayMessage(priceMessage);
 
-        display(quantity);
-        displayPrice(quantity * 5);
+        //display(quantity);
+        // displayPrice(quantity * 5);
     }
 
     // method to increase quantity
@@ -60,4 +63,19 @@ public class MainActivity extends AppCompatActivity {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
+
+
+    /**
+     * This method displays the given text on the screen.
+     */
+
+    private void displayMessage(String message) {
+
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+
+        priceTextView.setText(message);
+
+    }
+
+
 }
