@@ -31,34 +31,33 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
 
+        int price = quantity * 5;
         Date todaysDate = Calendar.getInstance().getTime();
-        String priceMessage = "Total: $" + ( quantity * 5 ) + "\n" + "Thank you!";
+        String priceMessage = "Total: $" + price + "\n" + "Thank you!";
         priceMessage = priceMessage + "\n" + todaysDate;
         displayMessage(priceMessage);
 
-        //display(quantity);
-        // displayPrice(quantity * 5);
     }
 
     // method to increase quantity
     public void increment(View view) {
         quantity = quantity + 1;
-        display(quantity);
+        displayQuantity(quantity);
 
     }
 
     // method to decrease quantity
     public void decrement(View view) {
         quantity = quantity - 1;
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayQuantity(int numberOfCoffees) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + numberOfCoffees);
     }
 
     /* This method displays the given price on the screen.
