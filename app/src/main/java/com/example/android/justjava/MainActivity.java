@@ -31,11 +31,15 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
 
-        int price = quantity * 5;
-        Date todaysDate = Calendar.getInstance().getTime();
-        String priceMessage = "Total: $" + price + "\n" + "Thank you!";
-        priceMessage = priceMessage + "\n" + todaysDate;
-        displayMessage(priceMessage);
+
+
+
+         int price = calculatePrice();
+         Date todaysDate = Calendar.getInstance().getTime();
+         String priceMessage = "Total: $" + price + "\n" + "Thank you!";
+         priceMessage = priceMessage + "\n" + todaysDate;
+         displayMessage(priceMessage);
+
 
     }
 
@@ -67,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 
+
+    /**
+     * Calculates the price of the order.
+     *
+     * @param quantity is the number of cups of coffee ordered
+     * @param pricePerCup is the price per cup
+     */
+
+    private int calculatePrice() {
+
+        int price = quantity * 5;
+        return price;
+
+    }
 
     /**
      * This method displays the given text on the screen.
