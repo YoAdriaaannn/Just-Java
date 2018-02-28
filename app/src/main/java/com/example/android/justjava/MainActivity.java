@@ -32,25 +32,32 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
 
 
-
-
-         int price = calculatePrice();
-         Date todaysDate = Calendar.getInstance().getTime();
-         String priceMessage = "Total: $" + price + "\n" + "Thank you!";
-         priceMessage = priceMessage + "\n" + todaysDate;
-         displayMessage(priceMessage);
+        // call method to calculate price
+        int price = calculatePrice();
+        // call the order summary and  create a string
+        String priceMessage = createOrderSummary(price);
+        // display the oder summary and message
+        displayMessage(priceMessage);
 
 
     }
 
-    // method to increase quantity
+    /**
+     * method to increase quantity
+     *
+     * @param quantity is the amount of cups of coffee ordered
+     */
     public void increment(View view) {
         quantity = quantity + 1;
         displayQuantity(quantity);
 
     }
 
-    // method to decrease quantity
+    /**
+     * method to decrease quantity
+     *
+     * @param quantity is teh amount of cups of coffee ordered
+     */
     public void decrement(View view) {
         quantity = quantity - 1;
         displayQuantity(quantity);
@@ -76,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
      * Calculates the price of the order.
      *
      * @param quantity is the number of cups of coffee ordered
-     * @param pricePerCup is the price per cup
+     * @param price    is the price per cup
      */
 
     private int calculatePrice() {
@@ -98,5 +105,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Creates summary of order and returns summary as string.
+     * @param orderMessage  is the order message string in full
+     * @param orderPrice    is the oder message price total
+     * @param orderQuantity is the order quantity
+     * @return
+     */
+
+    private String createOrderSummary(int orderPrice) {
+
+        String orderMessage = "Name: Captain Crunch" + "\n" + "Quantity: " + quantity + "\n" + "Total: $" + orderPrice + "\n" + "Thank you!";
+        return orderMessage;
+
+    }
 
 }
