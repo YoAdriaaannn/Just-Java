@@ -4,12 +4,12 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 
 /**
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * method to decrease quantity
      *
-     * @param quantity is teh amount of cups of coffee ordered
+     * @param quantity is the amount of cups of coffee ordered
      */
     public void decrement(View view) {
         quantity = quantity - 1;
@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         orderSummaryTextView.setText(message);
 
+
     }
 
     /**
@@ -120,4 +121,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Checkox state
+     */
+
+    private boolean whippedCream () {
+        CheckBox orderWhippedCream = (CheckBox) findViewById(R.id.checkbox_whipped_cream);
+        Boolean whippedCreamStatus = orderWhippedCream.isChecked();
+       Log.i("MainActivity.java", whippedCreamStatus.toString());
+        return  ;
+    }
 }
