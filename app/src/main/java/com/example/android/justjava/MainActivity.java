@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -34,9 +35,20 @@ public class MainActivity extends AppCompatActivity {
 
         // call method to calculate price
         int price = calculatePrice();
-        // call the order summary and  create a string
-        String priceMessage = createOrderSummary(price);
-        // display the oder summary and message
+
+        //Print to the log the value of whippedCream()
+        Log.v("MainActivity", "The value of whippedCream is: " + whippedCream());
+
+        //Print to the log the value of chocolate
+        Log.v("MainActivity", "The value of chocolateTopping is: " + chocolateTopping());
+
+        //Print to the log the value of getCustomerName
+        Log.v("MainActivity", "The value of custName is: " + getCustomerName());
+
+        // call the order summary, pass the price and value of the method whippedCream
+        String priceMessage = createOrderSummary(price, whippedCream(), chocolateTopping(), getCustomerName());
+
+        //display the oder summary and message
         displayMessage(priceMessage);
 
 
@@ -108,27 +120,38 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Creates summary of order and returns summary as string.
+     *
      * @param orderMessage  is the order message string in full
      * @param orderPrice    is the oder message price total
      * @param orderQuantity is the order quantity
      * @return
      */
 
-    private String createOrderSummary(int orderPrice) {
+    private String createOrderSummary(int orderPrice, boolean hasWhippedCream, boolean hasChocolate, String custName) {
 
-        String orderMessage = "Name: Captain Crunch" + "\n" + "Quantity: " + quantity + "\n" + "Total: $" + orderPrice + "\n" + "Thank you!";
+        String orderMessage = "Name = " + custName + "\n" + "Add whipped cream = " + hasWhippedCream + "\n" + "Add chocolate = " + hasChocolate + "\n" + "Quantity: " + quantity + "\n" + "Total: $" + orderPrice + "\n" + "Thank you!";
         return orderMessage;
 
     }
 
     /**
-     * Checkox state
+     * Get the  checbox state for whipped cream.
      */
 
-    private boolean whippedCream () {
+    private boolean whippedCream() {
         CheckBox orderWhippedCream = (CheckBox) findViewById(R.id.checkbox_whipped_cream);
-        Boolean whippedCreamStatus = orderWhippedCream.isChecked();
-       Log.i("MainActivity.java", whippedCreamStatus.toString());
-        return  ;
+
+        return orderWhippedCream.isChecked();
+    }
+
+    private boolean chocolateTopping () {
+        CheckBox orderedChocolateTopping = (CheckBox) findViewById(R.id.checkbox_chocolate);
+        return orderedChocolateTopping.isChecked();
+    }
+
+    private String getCustomerName () {
+
+        EditText customerName = (EditText) findViewById(R.id.edit_name);
+        return customerName.getText().toString();
     }
 }
