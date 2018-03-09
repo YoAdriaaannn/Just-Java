@@ -4,21 +4,19 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-
 
 /**
  * This app displays an order form to order coffee.
  */
+
 public class MainActivity extends AppCompatActivity {
 
-    // global variable for amount of coffee
+    // variable for amount of coffee
     int quantity = 0;
 
     @Override
@@ -33,42 +31,39 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
 
 
-        // call method to calculate price
-        int price = calculatePrice();
+        // Check to see if user ordered whipped cream.
+        CheckBox orderWhippedCream = findViewById(R.id.checkbox_whipped_cream);
+        Boolean hasWhippedCream = orderWhippedCream.isChecked();
 
-        //Print to the log the value of whippedCream()
-        Log.v("MainActivity", "The value of whippedCream is: " + whippedCream());
+        // Check to see if user ordered chocolate.
+        CheckBox orderedChocolateTopping = findViewById(R.id.checkbox_chocolate);
+        Boolean hasChocolate = orderedChocolateTopping.isChecked();
 
-        //Print to the log the value of chocolate
-        Log.v("MainActivity", "The value of chocolateTopping is: " + chocolateTopping());
 
-        //Print to the log the value of getCustomerName
-        Log.v("MainActivity", "The value of custName is: " + getCustomerName());
+        EditText customerName = findViewById(R.id.edit_name);
+        String name = customerName.getText().toString();
 
-        // call the order summary, pass the price and value of the method whippedCream
-        String priceMessage = createOrderSummary(price, whippedCream(), chocolateTopping(), getCustomerName());
 
-        //display the oder summary and message
+        // Call the order summary.
+        int price = calculatePrice(quantity, hasWhippedCream, hasChocolate);
+        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
+
+        //Display the order summary and message.
         displayMessage(priceMessage);
 
 
     }
 
     /**
-     * method to increase quantity
-     *
-     * @param quantity is the amount of cups of coffee ordered
+     * Method to increase quantity.
      */
     public void increment(View view) {
         quantity = quantity + 1;
         displayQuantity(quantity);
-
     }
 
     /**
-     * method to decrease quantity
-     *
-     * @param quantity is the amount of cups of coffee ordered
+     * Method to decrease quantity.
      */
     public void decrement(View view) {
         quantity = quantity - 1;
@@ -79,15 +74,8 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given quantity value on the screen.
      */
     private void displayQuantity(int numberOfCoffees) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCoffees);
-    }
-
-    /* This method displays the given price on the screen.
-           */
-    private void displayPrice(int number) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 
 
@@ -95,14 +83,24 @@ public class MainActivity extends AppCompatActivity {
      * Calculates the price of the order.
      *
      * @param quantity is the number of cups of coffee ordered
-     * @param price    is the price per cup
      */
 
-    private int calculatePrice() {
+    private int calculatePrice(int quantity, boolean whipStatus, boolean chocStatus) {
 
-        int price = quantity * 5;
-        return price;
+        int coffeePrice = 5;
+        int whippedCreamPrice = 1;
+        int chocolatePrice = 2;
+        int totalPrice;
 
+        // Check to see if whipped cream or chocolate has been added to order. If so adjust price of coffee.
+        if (whipStatus) {
+            coffeePrice = coffeePrice + whippedCreamPrice;
+        }
+        if (chocStatus) {
+            coffeePrice = coffeePrice + chocolatePrice;
+        }
+        totalPrice = coffeePrice * quantity;
+        return totalPrice;
     }
 
     /**
@@ -111,47 +109,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayMessage(String message) {
 
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
-
-
     }
 
     /**
      * Creates summary of order and returns summary as string.
      *
-     * @param orderMessage  is the order message string in full
-     * @param orderPrice    is the oder message price total
-     * @param orderQuantity is the order quantity
-     * @return
+     * @param orderPrice is the oder message price total
+     * @return orderMessage is the entire message to be displayed
      */
 
     private String createOrderSummary(int orderPrice, boolean hasWhippedCream, boolean hasChocolate, String custName) {
 
-        String orderMessage = "Name = " + custName + "\n" + "Add whipped cream = " + hasWhippedCream + "\n" + "Add chocolate = " + hasChocolate + "\n" + "Quantity: " + quantity + "\n" + "Total: $" + orderPrice + "\n" + "Thank you!";
-        return orderMessage;
+        return getString(R.string.name_tag) + custName + "\n" + getString(R.string.whipped_cream_tag) + hasWhippedCream + "\n" + getString(R.string.chocolate_tag) + hasChocolate + "\n" + getString(R.string.quantity_tag) + quantity + "\n" + getString(R.string.total_tag) + orderPrice + "\n" + getString(R.string.thank_you_tag);
+
 
     }
 
-    /**
-     * Get the  checbox state for whipped cream.
-     */
 
-    private boolean whippedCream() {
-        CheckBox orderWhippedCream = (CheckBox) findViewById(R.id.checkbox_whipped_cream);
-
-        return orderWhippedCream.isChecked();
-    }
-
-    private boolean chocolateTopping () {
-        CheckBox orderedChocolateTopping = (CheckBox) findViewById(R.id.checkbox_chocolate);
-        return orderedChocolateTopping.isChecked();
-    }
-
-    private String getCustomerName () {
-
-        EditText customerName = (EditText) findViewById(R.id.edit_name);
-        return customerName.getText().toString();
-    }
 }

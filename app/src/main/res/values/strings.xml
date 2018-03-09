@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Just Java</string>
+    <string name="name_tag">Name = &#160;</string>
+    <string name="whipped_cream_tag">Add whipped cream = &#160;</string>
+    <string name="chocolate_tag">Add chocolate = &#160;</string>
+    <string name="quantity_tag">Quantity: &#160;</string>
+    <string name="total_tag">Total: $ &#160;</string>
+    <string name="thank_you_tag">Thank you!</string>
 </resources>
