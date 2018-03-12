@@ -2,6 +2,8 @@
 package com.example.android.justjava;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -45,12 +47,19 @@ public class MainActivity extends AppCompatActivity {
         String name = customerName.getText().toString();
 
 
-        // Call the order summary.
+        // Calculate the price.
         int price = calculatePrice(quantity, hasWhippedCream, hasChocolate);
-        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
 
-        //Display the order summary and message.
-        displayMessage(priceMessage);
+        // Send order summary via e mail.
+        String summary = getString(R.string.name_tag) + name + "\n" + getString(R.string.whipped_cream_tag) + hasWhippedCream + "\n" + getString(R.string.chocolate_tag) + hasChocolate + "\n" + getString(R.string.quantity_tag) + quantity + "\n" + getString(R.string.total_tag) + price + "\n" + getString(R.string.thank_you_tag);
+        Intent sendMail = new Intent(Intent.ACTION_SEND);
+        sendMail.setData(Uri.parse("mailto:"));
+        sendMail.setType("*/*");
+        sendMail.putExtra(Intent.EXTRA_SUBJECT, "Just Java E Mail Order");
+        sendMail.putExtra(Intent.EXTRA_TEXT, summary);
+        if (sendMail.resolveActivity(getPackageManager()) != null) {
+            startActivity(sendMail);
+        }
 
 
     }
@@ -60,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void increment(View view) {
         if (quantity >= 100) {
-       
+
             Toast.makeText(this, "You can only order between 1 and 100 coffees. Sorry!", Toast.LENGTH_SHORT).show();
 
         } else {
@@ -72,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method to decrease quantity.
      */
+    
     public void decrement(View view) {
-        if (quantity < 2) {
+        if (quantity <= 1) {
             Toast.makeText(this, "You can only order between 1 and 100 coffees. Sorry!", Toast.LENGTH_SHORT).show();
 
         } else {
@@ -85,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given quantity value on the screen.
      */
+
     private void displayQuantity(int numberOfCoffees) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCoffees);
@@ -113,30 +124,6 @@ public class MainActivity extends AppCompatActivity {
             coffeePrice = coffeePrice + chocolatePrice;
         }
         return coffeePrice * quantity;
-
-    }
-
-    /**
-     * This method displays the given text on the screen.
-     */
-
-    private void displayMessage(String message) {
-
-        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
-
-    /**
-     * Creates summary of order and returns summary as string.
-     *
-     * @param orderPrice is the oder message price total
-     * @return orderMessage is the entire message to be displayed
-     */
-
-    private String createOrderSummary(int orderPrice, boolean hasWhippedCream, boolean hasChocolate, String custName) {
-
-        return getString(R.string.name_tag) + custName + "\n" + getString(R.string.whipped_cream_tag) + hasWhippedCream + "\n" + getString(R.string.chocolate_tag) + hasChocolate + "\n" + getString(R.string.quantity_tag) + quantity + "\n" + getString(R.string.total_tag) + orderPrice + "\n" + getString(R.string.thank_you_tag);
-
 
     }
 
