@@ -6,4 +6,6 @@
     <string name="quantity_tag">Quantity: &#160;</string>
     <string name="total_tag">Total: $ &#160;</string>
     <string name="thank_you_tag">Thank you!</string>
+    <string name="email_subject">Just Java E Mail Order</string>
+    <string name="msg_coffee">You can only order between 1 and 100 coffees. Sorry!</string>
 </resources>

@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Intent sendMail = new Intent(Intent.ACTION_SEND);
         sendMail.setData(Uri.parse("mailto:"));
         sendMail.setType("*/*");
-        sendMail.putExtra(Intent.EXTRA_SUBJECT, "Just Java E Mail Order");
+        sendMail.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
         sendMail.putExtra(Intent.EXTRA_TEXT, summary);
         if (sendMail.resolveActivity(getPackageManager()) != null) {
             startActivity(sendMail);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         if (quantity >= 100) {
 
-            Toast.makeText(this, "You can only order between 1 and 100 coffees. Sorry!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.msg_coffee), Toast.LENGTH_SHORT).show();
 
         } else {
             quantity = quantity + 1;
@@ -81,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method to decrease quantity.
      */
-    
+
     public void decrement(View view) {
         if (quantity <= 1) {
-            Toast.makeText(this, "You can only order between 1 and 100 coffees. Sorry!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.msg_coffee), Toast.LENGTH_SHORT).show();
 
         } else {
             quantity = quantity - 1;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayQuantity(int numberOfCoffees) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + numberOfCoffees);
+        quantityTextView.setText(" " + numberOfCoffees);
     }
 
 
