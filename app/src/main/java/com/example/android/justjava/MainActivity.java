@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
         int whippedCreamPrice = 1;
         int chocolatePrice = 2;
 
-
         // Check to see if whipped cream or chocolate has been added to order. If so adjust price of coffee.
         if (whipStatus) {
             coffeePrice = coffeePrice + whippedCreamPrice;

@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/java">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
@@ -20,6 +21,7 @@
             android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_background_normal"
             android:hint="@string/enter_your_name"
             android:imeOptions="actionDone"
             android:inputType="textCapWords" />
@@ -33,6 +35,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/toppings"
             android:textAllCaps="true"
+
             android:textSize="16sp" />
 
         <CheckBox
@@ -64,7 +67,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/quantity"
             android:textAllCaps="true"
-            android:textColor="#848383"
+
             android:textSize="16sp" />
 
         <LinearLayout
@@ -79,6 +82,7 @@
                 android:layout_height="48dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
+                android:background="@color/transRed"
                 android:onClick="increment"
                 android:text="@string/plus" />
 
@@ -88,7 +92,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="0"
-                android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
             <Button
@@ -97,6 +100,7 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:background="@color/transRed"
                 android:onClick="decrement"
                 android:text="@string/minus" />
 
@@ -104,31 +108,13 @@
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/price_tag_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="@string/order_summary"
-            android:textAllCaps="true"
-            android:textColor="#848383"
-            android:textSize="16sp" />
-
-
-        <TextView
-            android:id="@+id/order_summary_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="@string/defualt_amount"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-
         <Button
             android:id="@+id/order_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="36dp"
+            android:background="@color/transRed"
             android:onClick="submitOrder"
             android:padding="8dp"
             android:text="@string/order" />

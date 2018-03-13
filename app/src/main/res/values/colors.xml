@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="Indigo800">#283593</color>
+    <color name="blueAccent200">#448aff</color>
+    <color name="DeepBlue">#040d3e</color>
+    <color name="Titles">#324cdc</color>
+    <color name="MegaBlue">#001b88</color>
+    <color name="deepRed">#460000</color>
+    <color name="brightRed">#ff0000</color>
+    <color name="transRed">#c4f10707</color>
+
 </resources>
