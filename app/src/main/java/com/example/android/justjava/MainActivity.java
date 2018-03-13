@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is called when the order button is clicked.
      */
-    public void submitOrder(View view) {
 
+    public void submitOrder(View view) {
 
         // Check to see if user ordered whipped cream.
         CheckBox orderWhippedCream = findViewById(R.id.checkbox_whipped_cream);
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         // Grab a name from the user
         EditText customerName = findViewById(R.id.edit_name);
         String name = customerName.getText().toString();
-
 
         // Calculate the price.
         int price = calculatePrice(quantity, hasWhippedCream, hasChocolate);
@@ -60,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
         if (sendMail.resolveActivity(getPackageManager()) != null) {
             startActivity(sendMail);
         }
-
-
     }
 
     /**
      * Method to increase quantity.
      */
+
+
     public void increment(View view) {
         if (quantity >= 100) {
 
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void decrement(View view) {
         if (quantity <= 1) {
-            Toast.makeText(this,getString(R.string.msg_coffee), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.msg_coffee), Toast.LENGTH_SHORT).show();
 
         } else {
             quantity = quantity - 1;

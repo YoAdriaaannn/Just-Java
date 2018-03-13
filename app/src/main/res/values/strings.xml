@@ -8,4 +8,14 @@
     <string name="thank_you_tag">Thank you!</string>
     <string name="email_subject">Just Java E Mail Order</string>
     <string name="msg_coffee">You can only order between 1 and 100 coffees. Sorry!</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="toppings">toppings</string>
+    <string name="whipped_cream">Whipped Cream</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="quantity">QUANTITY</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="order">ORDER</string>
+    <string name="defualt_amount">$0</string>
 </resources>

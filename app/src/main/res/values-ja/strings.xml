@@ -5,13 +5,21 @@
   -->
 
 <resources>
-    <string name="app_name">10/5000ジャストジャバ</string>
+    <string name="app_name">ジャストジャバ</string>
     <string name="name_tag">名前= &#160;</string>
     <string name="whipped_cream_tag">ホイップクリームを加える= &#160;</string>
     <string name="chocolate_tag">チョコレートを加える= &#160;</string>
     <string name="quantity_tag">量： &#160;</string>
-    <string name="total_tag">9/5000合計 $ &#160;</string>
+    <string name="total_tag">合計 $ &#160;</string>
     <string name="thank_you_tag">ありがとうございました！</string>
     <string name="email_subject">ちょうどJava電子メールの順序</string>
     <string name="msg_coffee">1〜100個のコーヒーしか注文できません。 ごめんなさい！</string>
+    <string name="enter_your_name">あなたの名前を入力してください</string>
+    <string name="toppings">トッピング</string>
+    <string name="whipped_cream">ホイップクリーム</string>
+    <string name="chocolate">チョコレート</string>
+    <string name="quantity">数量</string>
+    <string name="order_summary">チョコレート</string>
+    <string name="order">注文</string>
+    <string name="defualt_amount">$0</string>
 </resources>
